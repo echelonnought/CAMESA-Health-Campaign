@@ -47,15 +47,8 @@ function smoothScroll() {
 //     counter[i].addEventListener('click', navbarLinksClicked)
 // }
 
-// Registering Service Worker
-if ("serviceWorker" in navigator) {
-  window.addEventListener("load", () => {
-    navigator.serviceWorker
-      .register("/sw.js")
-      .then(responseReg => console.log("Registered!", responseReg.scope))
-      .catch(err => console.log("Nada mi Amigo!: ", err));
-  });
-}
+
+
 
 
 
