@@ -121,7 +121,7 @@ input:valid {
     text-align: start;
 }
 
-@media (max-width: 400px) {
+/* @media (max-width: 400px) {
     .wrapper form p {
         display: grid;
         grid-template-columns: 1fr;
@@ -135,17 +135,20 @@ input:valid {
         visibility: hidden;
     }
    
-}
+} */
 
-@media (min-width: 676px) {
-    .wrapper form p{
+@media (max-width: 676px) {
+    .wrapper form p {
         display: grid;
-        grid-template-columns: 1fr 1fr ;
-        margin: 10px;
-        grid-gap: 20px;
+        grid-template-columns: 1fr;
+        grid-gap: 5px;
+        
     }
-    .wrapper form label:hover, .wrapper form label:focus {
-        background: rgba(23, 19, 89, 0.3);
+    .wrapper form input {
+        border: 1px solid #e0e0e0;
+    }
+    input:placeholder {
+        visibility: hidden;
     }
    
 }

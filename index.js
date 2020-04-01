@@ -11,23 +11,36 @@ function navbarTogglerClicked() {
 
 navbarLinks.forEach(elem => elem.addEventListener("click", navbarLinksClicked));
  
-function navbarLinksClicked(event) {
-  smoothScroll(event); // smooth scrolling effect
+function navbarLinksClicked() {
+  smoothScroll(); // smooth scrolling effect
   if (navbarMenu.classList.contains("open")) {
     navbarToggler.click();
   }
 }
 
- function smoothScroll(event) {
-   event.preventDefault();
-   const targetId = event.currentTarget.getAttribute("href");
-   console.log(targetId);
-   window.scrollTo({
-     top: targetId === '#' ? 0 : document.querySelector(targetId).offsetTop,
-     behavior: "smooth"
-    }
-   )
- }
+//  function smoothScroll(event) {
+//    event.preventDefault();
+//    const targetId = event.currentTarget.getAttribute("href");
+//    console.log(targetId);
+//    document.querySelector(targetId).scrollIntoView({
+//      behavior: "smooth",
+//      block: "start"
+//     }
+//    )
+//  }
+
+function smoothScroll() {
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const targetId = e.currentTarget.getAttribute('href') ==="#" ? "main" : e.currentTarget.getAttribute('href');
+        document.querySelector(targetId).scrollIntoView({
+            behavior: 'smooth'
+        });
+    });
+  });
+}
+
 
 // for (let i = 0; i < navbarLinks.length; i++) {
 //      counter[i] = navbarLinks[i];
@@ -51,7 +64,7 @@ const sliderChild = document.querySelector(".sliderchild");
 let initialPosition = null;
 let moving = false;
 let transform = 0;
-
+let lastPageX = 0;
 const gestureStart = e => {
   initialPosition = e.pageX;
   moving = true;
@@ -62,14 +75,17 @@ const gestureStart = e => {
   if (transformMatrix !== "none") {
     transform = parseInt(transformMatrix.split(",")[4].trim());
   }
-  console.log(transform)
+  console.log(transformMatrix)
 };
 const gestureMove = e => {
   if (moving) {
     const currentPosition = e.pageX;
+   
     const diff = currentPosition - initialPosition;
+    transfromedValue = transform + diff;
     sliderChild.style.transform = `translatex(${diff}px)`;
   }
+  lastPageX = e.pageX;
 };
 const gestureEnd = e => {
   moving = false;
