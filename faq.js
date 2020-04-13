@@ -8,12 +8,12 @@ for (let i = 0; i < accordions.length; i++) {
         if(content.style.maxHeight) {
         // looks at the height of the accordion: if it is open, it closes it
             content.style.maxHeight = null;
-            console.log("Accordion closes");
+           // console.log("Accordion closes");
         }
         else {
         // looks at the height of the accordion if it is closed and then opens it  
             content.style.maxHeight = content.scrollHeight + 'px';
-            console.log("Accordion opens");
+            // console.log("Accordion opens");
         }
     
      }) 

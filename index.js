@@ -68,7 +68,7 @@ const gestureStart = e => {
   if (transformMatrix !== "none") {
     transform = parseInt(transformMatrix.split(",")[4].trim());
   }
-  console.log(transformMatrix)
+  // console.log(transformMatrix)
 };
 const gestureMove = e => {
   if (moving) {
